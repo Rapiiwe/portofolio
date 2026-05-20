@@ -13,6 +13,60 @@ document.addEventListener('DOMContentLoaded', () => {
   let soundEnabled = false;
   let activeDrawColor = '#FF007F'; 
   let isDrawing = false;
+
+  // ── HAMBURGER MENU ──────────────────────────────────────────────────────
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileDrawer = document.getElementById('mobile-nav-drawer');
+
+  function toggleMobileMenu(forceClose = false) {
+    const isOpen = hamburger.classList.contains('open');
+    if (forceClose || isOpen) {
+      hamburger.classList.remove('open');
+      mobileDrawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    } else {
+      hamburger.classList.add('open');
+      mobileDrawer.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  if (hamburger && mobileDrawer) {
+    hamburger.addEventListener('click', () => toggleMobileMenu());
+
+    // Close drawer when a nav link is clicked
+    mobileDrawer.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+      link.addEventListener('click', () => toggleMobileMenu(true));
+    });
+
+    // Sync mobile action buttons with desktop counterparts
+    const mobileButtonMap = {
+      'demo-toggle-mobile': 'demo-toggle',
+      'lang-toggle-mobile': 'lang-toggle',
+      'shuffle-btn-mobile': 'shuffle-btn',
+      'sound-toggle-mobile': 'sound-toggle',
+      'music-toggle-mobile': 'music-toggle',
+    };
+
+    Object.entries(mobileButtonMap).forEach(([mobileId, desktopId]) => {
+      const mobileBtn = document.getElementById(mobileId);
+      const desktopBtn = document.getElementById(desktopId);
+      if (mobileBtn && desktopBtn) {
+        mobileBtn.addEventListener('click', () => {
+          desktopBtn.click();
+          // Sync label after click
+          setTimeout(() => {
+            mobileBtn.textContent = desktopBtn.textContent;
+            mobileBtn.className = desktopBtn.className;
+            mobileBtn.style.cssText = 'font-size: 0.8rem; width: 100%;';
+          }, 50);
+        });
+      }
+    });
+  }
+  // ────────────────────────────────────────────────────────────────────────
   
   function playSound(type) {
     if (!soundEnabled) return;
