@@ -25,7 +25,7 @@
   <nav>
     <a href="#hero" class="nav-logo">RAFI.</a>
     
-    <ul class="nav-menu">
+    <ul class="nav-menu" id="nav-menu">
       <li class="nav-item"><a href="#about" data-trans="nav-about">Tentang</a></li>
       <li class="nav-item"><a href="#skills" data-trans="nav-skills">Keahlian</a></li>
       <li class="nav-item"><a href="#timeline" data-trans="nav-timeline">Perjalanan</a></li>
@@ -37,18 +37,40 @@
     </ul>
 
     <div class="nav-actions">
-
       <button id="demo-toggle" class="neo-btn btn-green" style="padding: 0.5rem 1rem; font-size: 0.75rem;">🎮 Play Demo</button>
-
       <button id="lang-toggle" class="neo-btn btn-pink" style="padding: 0.5rem 1rem; font-size: 0.75rem;">🇬🇧 English</button>
-
       <button id="shuffle-btn" class="neo-btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">🎨 Shuffle Colors</button>
-
       <button id="sound-toggle" class="neo-btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">🔇 Suara: Mati</button>
-
       <button id="music-toggle" class="neo-btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">🎵 Musik: Mati</button>
     </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <ul class="mobile-nav-menu">
+      <li><a href="#about" data-trans="nav-about">Tentang</a></li>
+      <li><a href="#skills" data-trans="nav-skills">Keahlian</a></li>
+      <li><a href="#timeline" data-trans="nav-timeline">Perjalanan</a></li>
+      <li><a href="#projects" data-trans="nav-projects">Proyek</a></li>
+      <li><a href="#certificates" data-trans="nav-certificates">Sertifikat</a></li>
+      <li><a href="#cv" data-trans="nav-cv">Resume</a></li>
+      <li><a href="#pixel-drawer" data-trans="nav-draw">Gambar</a></li>
+      <li><a href="#contact" data-trans="nav-contact">Kontak</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <button id="demo-toggle-mobile" class="neo-btn btn-green" style="font-size: 0.8rem; width: 100%;">🎮 Play Demo</button>
+      <button id="lang-toggle-mobile" class="neo-btn btn-pink" style="font-size: 0.8rem; width: 100%;">🇬🇧 English</button>
+      <button id="shuffle-btn-mobile" class="neo-btn btn-secondary" style="font-size: 0.8rem; width: 100%;">🎨 Shuffle Colors</button>
+      <button id="sound-toggle-mobile" class="neo-btn btn-secondary" style="font-size: 0.8rem; width: 100%;">🔇 Suara: Mati</button>
+      <button id="music-toggle-mobile" class="neo-btn btn-secondary" style="font-size: 0.8rem; width: 100%;">🎵 Musik: Mati</button>
+    </div>
+  </div>
 
 
   <section id="hero">
@@ -532,7 +554,6 @@
         <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🎓</div>
         <h3 style="margin-bottom: 0.5rem; text-transform: uppercase; font-size: 1.5rem;" data-trans="certs-coming-soon">Sertifikat Segera Hadir</h3>
         <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;" data-trans="certs-desc">
-          Saat ini sedang mempersiapkan sertifikasi untuk Pengembangan Mobile Flutter, Administrasi Database, dan Rekayasa Frontend Tingkat Lanjut.
         </p>
         <span class="neo-badge" style="background-color: var(--neo-pink); font-size: 0.85rem; padding: 0.4rem 0.8rem;" data-trans="certs-stay-tuned">Pantau Terus!</span>
       </div>
