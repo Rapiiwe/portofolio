@@ -864,7 +864,30 @@ document.addEventListener('DOMContentLoaded', () => {
       "edu2-org": "Independent Learning",
       "edu2-desc": "Supplementing formal academic learning with industry certification paths.",
       "edu2-li1": "Learning from various sources including YouTube, TikTok, and blog posts.",
-      "edu2-li2": "Focusing on Python, HTML, CSS, responsive layouts, and responsive design systems."
+      "edu2-li2": "Focusing on Python, HTML, CSS, responsive layouts, and responsive design systems.",
+
+      // Featured Projects
+      "fp1-name": "Portfolio",
+      "fp1-desc": "A premium developer portfolio designed. Features a draggable terminal system, real-time clock widgets, sound board integrations, and printable stylesheets.",
+      "fp2-name": "Neo Draw Canvas",
+      "fp2-desc": "An interactive retro pixel board widget embedded in a web canvas container. Allows pixel grids to be painted with colors, cleared, and exported directly to PNG files. Includes retro Audio synthesizer sounds.",
+      "fp-btn-source": "Source Code",
+      "fp-btn-demo": "Live Demo",
+      "fp2-btn-run": "Run Canvas",
+
+      // CV Section
+      "cv-edu1-role": "Associate / Bachelor of Informatics Engineering",
+      "cv-edu1-date": "2024 - Present",
+      "cv-edu1-desc": "Focused on algorithmic fundamentals, software engineering, and database systems. Participant in student programming associations.",
+      "cv-skill-dev": "Development",
+      "cv-skill-tools": "Tools",
+      "cv-skill-soft": "Soft Skills",
+      "cv-skill-soft-list": "Problem Solving, Rapid Self-Learning, Critical Reasoning, Team Collaborations",
+      "cv-proj1-role": "Personal Portfolio Web Environment",
+      "cv-proj1-desc": "Engineered and designed an interactive client portfolio featuring retro OS panels, Web Audio synthesizers, and pixel board drawing systems.",
+      "cv-proj2-role": "Independent Project Development",
+      "cv-proj2-date": "2024 - 2025",
+      "cv-proj2-desc": "Constructed multiple personal open-source projects hosted on GitHub, refining proficiency in Python, HTML, CSS."
     },
     id: {
       "nav-about": "Tentang",
@@ -932,7 +955,30 @@ document.addEventListener('DOMContentLoaded', () => {
       "edu2-org": "Belajar Mandiri",
       "edu2-desc": "Melengkapi pembelajaran akademis formal dengan jalur sertifikasi industri.",
       "edu2-li1": "Belajar dari berbagai sumber, mulai dari YouTube, TikTok, dan blog.",
-      "edu2-li2": "Berfokus pada Python, HTML, CSS, tata letak responsif, dan sistem desain responsif."
+      "edu2-li2": "Berfokus pada Python, HTML, CSS, tata letak responsif, dan sistem desain responsif.",
+
+      // Featured Projects
+      "fp1-name": "Portfolio",
+      "fp1-desc": "Portofolio developer premium yang dirancang dengan sistem terminal yang bisa diseret, widget jam real-time, integrasi papan suara, dan stylesheet yang bisa dicetak.",
+      "fp2-name": "Neo Draw Canvas",
+      "fp2-desc": "Widget papan piksel retro interaktif yang tertanam dalam container canvas web. Memungkinkan grid piksel diwarnai, dihapus, dan diekspor langsung ke file PNG. Dilengkapi suara synthesizer Audio retro.",
+      "fp-btn-source": "Kode Sumber",
+      "fp-btn-demo": "Demo Langsung",
+      "fp2-btn-run": "Jalankan Canvas",
+
+      // CV Section
+      "cv-edu1-role": "Sarjana Teknik Informatika",
+      "cv-edu1-date": "2024 - Sekarang",
+      "cv-edu1-desc": "Berfokus pada dasar-dasar algoritma, rekayasa perangkat lunak, dan sistem basis data. Peserta aktif asosiasi pemrograman mahasiswa.",
+      "cv-skill-dev": "Pengembangan",
+      "cv-skill-tools": "Alat",
+      "cv-skill-soft": "Soft Skills",
+      "cv-skill-soft-list": "Pemecahan Masalah, Belajar Mandiri Cepat, Penalaran Kritis, Kolaborasi Tim",
+      "cv-proj1-role": "Lingkungan Web Portofolio Pribadi",
+      "cv-proj1-desc": "Merancang dan membangun portofolio interaktif dengan panel OS retro, synthesizer Web Audio, dan sistem gambar papan piksel.",
+      "cv-proj2-role": "Pengembangan Proyek Mandiri",
+      "cv-proj2-date": "2024 - 2025",
+      "cv-proj2-desc": "Membangun beberapa proyek open-source pribadi yang dihosting di GitHub, meningkatkan kemampuan dalam Python, HTML, CSS."
     }
   };
 
