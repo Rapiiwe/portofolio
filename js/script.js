@@ -1153,22 +1153,24 @@ document.addEventListener('DOMContentLoaded', () => {
           
           
           // Gambar love/hati di grid 16x16
-          // Grid 16 kolom, index = row*16 + col
+          // index = baris * 16 + kolom
           const rCoords = [
-            // Baris 3: dua puncak hati
-            18, 19, 22, 23,
-            // Baris 4: melebar
-            17, 18, 19, 20, 21, 22, 23, 24,
-            // Baris 5: penuh
-            17, 18, 19, 20, 21, 22, 23, 24,
-            // Baris 6: penuh
-            18, 19, 20, 21, 22, 23,
-            // Baris 7: menyempit
-            19, 20, 21, 22,
-            // Baris 8: lebih sempit
-            20, 21,
-            // Baris 9: titik ujung
-            20
+            // Baris 2: dua puncak hati
+            2*16+3, 2*16+4,  2*16+9, 2*16+10,
+            // Baris 3: melebar
+            3*16+2, 3*16+3, 3*16+4, 3*16+5,  3*16+8, 3*16+9, 3*16+10, 3*16+11,
+            // Baris 4: menyatu penuh
+            4*16+2, 4*16+3, 4*16+4, 4*16+5, 4*16+6, 4*16+7, 4*16+8, 4*16+9, 4*16+10, 4*16+11,
+            // Baris 5: mulai menyempit
+            5*16+3, 5*16+4, 5*16+5, 5*16+6, 5*16+7, 5*16+8, 5*16+9, 5*16+10,
+            // Baris 6: lebih sempit
+            6*16+4, 6*16+5, 6*16+6, 6*16+7, 6*16+8, 6*16+9,
+            // Baris 7: semakin sempit
+            7*16+5, 7*16+6, 7*16+7, 7*16+8,
+            // Baris 8: hampir ujung
+            8*16+6, 8*16+7,
+            // Baris 9: titik ujung bawah
+            9*16+7
           ];
           
           const cells = document.querySelectorAll('.pixel-cell');
