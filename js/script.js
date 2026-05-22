@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   
   const originalTextContent = {};
   const originalPlaceholders = {};
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeDrawColor = '#FF007F'; 
   let isDrawing = false;
 
-  // ── HAMBURGER MENU ──────────────────────────────────────────────────────
+  
   const hamburger = document.getElementById('nav-hamburger');
   const mobileDrawer = document.getElementById('mobile-nav-drawer');
 
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && mobileDrawer) {
     hamburger.addEventListener('click', () => toggleMobileMenu());
 
-    // Close drawer when a nav link is clicked
+    
     mobileDrawer.querySelectorAll('.mobile-nav-menu a').forEach(link => {
       link.addEventListener('click', () => toggleMobileMenu(true));
     });
 
-    // Sync mobile action buttons with desktop counterparts
+    
     const mobileButtonMap = {
       'demo-toggle-mobile': 'demo-toggle',
       'lang-toggle-mobile': 'lang-toggle',
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mobileBtn && desktopBtn) {
         mobileBtn.addEventListener('click', () => {
           desktopBtn.click();
-          // Sync label after click
+          
           setTimeout(() => {
             mobileBtn.textContent = desktopBtn.textContent;
             mobileBtn.className = desktopBtn.className;
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-  // ────────────────────────────────────────────────────────────────────────
+  
   
   function playSound(type) {
     if (!soundEnabled) return;
@@ -295,22 +295,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const terminalPromptText = document.getElementById('terminal-prompt-path');
 
   const BIO_COMMANDS_EN = {
-    Aboutme: "User: Rafi Rahmadani Zain<br>Role: Web Developer & Informatics Student<br>Major: Informatics Engineering<br>Status: Learning, coding, & solving bugs daily.",
+    "about me": "User: Rafi Rahmadani Zain<br>Role: Web Developer & Informatics Student<br>Major: Informatics Engineering<br>Status: Learning, coding, & solving bugs daily.",
     skills: "Frontend: HTML5, CSS3, JavaScript (ES6+), ReactJS, Bootstrap, TailwindCSS, Flutter<br>Backend: Node.js, Python<br>Tools: Git, GitHub, Vite, VS Code, Android Studio",
     education: "UPI YPTK Padang<br>Focusing on Software Development and Information Systems.",
     hobbies: "Code commit, Coffee consumption, Reading docs, Gaming, Synth tinkering.",
     contact: "Instagram: @_iamrapii<br>GitHub: github.com/Rapiiwe<br>Email: rafirahmadanizain@gmail.com",
-    help: "Available commands: <strong>About me</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>hobbies</strong>, <strong>contact</strong>, <strong>clear</strong>, <strong>help</strong>",
+    help: "Available commands: <strong>about me</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>hobbies</strong>, <strong>contact</strong>, <strong>clear</strong>, <strong>help</strong>",
     clear: ""
   };
 
   const BIO_COMMANDS_ID = {
-    Aboutme: "Pengguna: Rafi Rahmadani Zain<br>Peran: Pengembang Web & Mahasiswa Informatika<br>Jurusan: Teknik Informatika<br>Status: Belajar, ngoding, & memecahkan bug setiap hari.",
+    "about me": "Pengguna: Rafi Rahmadani Zain<br>Peran: Pengembang Web & Mahasiswa Informatika<br>Jurusan: Teknik Informatika<br>Status: Belajar, ngoding, & memecahkan bug setiap hari.",
     skills: "Frontend: HTML5, CSS3, JavaScript (ES6+), ReactJS, Bootstrap, TailwindCSS, Flutter<br>Backend: Node.js, Python<br>Alat: Git, GitHub, Vite, VS Code, Android Studio",
     education: "UPI YPTK Padang<br>Fokus pada Pengembangan Perangkat Lunak dan Sistem Informasi.",
     hobbies: "Menulis kode, minum kopi, membaca dokumentasi, bermain game, utak-atik sintesis suara.",
     contact: "Instagram: @_iamrapii<br>GitHub: github.com/Rapiiwe<br>Email: rafirahmadanizain@gmail.com",
-    help: "Perintah tersedia: <strong>About me</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>hobbies</strong>, <strong>contact</strong>, <strong>clear</strong>, <strong>help</strong>",
+    help: "Perintah tersedia: <strong>about me</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>hobbies</strong>, <strong>contact</strong>, <strong>clear</strong>, <strong>help</strong>",
     clear: ""
   };
 
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateTimeWidgets() {
     const localTimeEl = document.getElementById('local-time');
     if (localTimeEl) {
-      // UTC+7 (Asia/Jakarta timezone)
+      
       const options = {
         timeZone: 'Asia/Jakarta',
         hour: '2-digit',
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "edu2-li1": "Learning from various sources including YouTube, TikTok, and blog posts.",
       "edu2-li2": "Focusing on Python, HTML, CSS, responsive layouts, and responsive design systems.",
 
-      // Featured Projects
+      
       "fp1-name": "Portfolio",
       "fp1-desc": "A premium developer portfolio designed. Features a draggable terminal system, real-time clock widgets, sound board integrations, and printable stylesheets.",
       "fp2-name": "Neo Draw Canvas",
@@ -875,7 +875,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "fp-btn-demo": "Live Demo",
       "fp2-btn-run": "Run Canvas",
 
-      // CV Section
+      
       "cv-edu1-role": "Associate / Bachelor of Informatics Engineering",
       "cv-edu1-date": "2024 - Present",
       "cv-edu1-desc": "Focused on algorithmic fundamentals, software engineering, and database systems. Participant in student programming associations.",
@@ -957,7 +957,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "edu2-li1": "Belajar dari berbagai sumber, mulai dari YouTube, TikTok, dan blog.",
       "edu2-li2": "Berfokus pada Python, HTML, CSS, tata letak responsif, dan sistem desain responsif.",
 
-      // Featured Projects
+      
       "fp1-name": "Portfolio",
       "fp1-desc": "Portofolio developer premium yang dirancang dengan sistem terminal yang bisa diseret, widget jam real-time, integrasi papan suara, dan stylesheet yang bisa dicetak.",
       "fp2-name": "Neo Draw Canvas",
@@ -966,7 +966,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "fp-btn-demo": "Demo Langsung",
       "fp2-btn-run": "Jalankan Canvas",
 
-      // CV Section
+      
       "cv-edu1-role": "Sarjana Teknik Informatika",
       "cv-edu1-date": "2024 - Sekarang",
       "cv-edu1-desc": "Berfokus pada dasar-dasar algoritma, rekayasa perangkat lunak, dan sistem basis data. Peserta aktif asosiasi pemrograman mahasiswa.",
@@ -986,7 +986,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLang = lang;
     BIO_COMMANDS = currentLang === 'en' ? BIO_COMMANDS_EN : BIO_COMMANDS_ID;
     
-    // Translate text nodes
+    
     document.querySelectorAll('[data-trans]').forEach(el => {
       const key = el.getAttribute('data-trans');
       if (currentLang === 'id') {
@@ -1000,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Translate input placeholders
+    
     document.querySelectorAll('[data-trans-placeholder]').forEach(el => {
       const key = el.getAttribute('data-trans-placeholder');
       if (currentLang === 'id') {
@@ -1014,20 +1014,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update Language button
+    
     const langToggle = document.getElementById('lang-toggle');
     if (langToggle) {
       langToggle.textContent = currentLang === 'en' ? '🇮🇩 Bahasa' : '🇬🇧 English';
     }
 
-    // Update sound toggle button text
+    
     if (soundToggle) {
       soundToggle.textContent = currentLang === 'en'
         ? (soundEnabled ? '🔊 Sound: On' : '🔇 Sound: Off')
         : (soundEnabled ? '🔊 Suara: Aktif' : '🔇 Suara: Mati');
     }
 
-    // Update music toggle button text
+    
     if (typeof updateMusicButtonState === 'function') {
       updateMusicButtonState();
     }
@@ -1070,7 +1070,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (demoActive) return;
     demoActive = true;
 
-    // Tutup mobile drawer otomatis saat demo dimulai
+    
     toggleMobileMenu(true);
     
     if (!soundEnabled) {
@@ -1152,24 +1152,24 @@ document.addEventListener('DOMContentLoaded', () => {
           if (clearBtn) clearBtn.click();
           
           
-          // Gambar love/hati di grid 16x16
-          // index = baris * 16 + kolom
+          
+          
           const rCoords = [
-            // Baris 2: dua puncak hati
+            
             2*16+3, 2*16+4,  2*16+9, 2*16+10,
-            // Baris 3: melebar
+            
             3*16+2, 3*16+3, 3*16+4, 3*16+5,  3*16+8, 3*16+9, 3*16+10, 3*16+11,
-            // Baris 4: menyatu penuh
+            
             4*16+2, 4*16+3, 4*16+4, 4*16+5, 4*16+6, 4*16+7, 4*16+8, 4*16+9, 4*16+10, 4*16+11,
-            // Baris 5: mulai menyempit
+            
             5*16+3, 5*16+4, 5*16+5, 5*16+6, 5*16+7, 5*16+8, 5*16+9, 5*16+10,
-            // Baris 6: lebih sempit
+            
             6*16+4, 6*16+5, 6*16+6, 6*16+7, 6*16+8, 6*16+9,
-            // Baris 7: semakin sempit
+            
             7*16+5, 7*16+6, 7*16+7, 7*16+8,
-            // Baris 8: hampir ujung
+            
             8*16+6, 8*16+7,
-            // Baris 9: titik ujung bawah
+            
             9*16+7
           ];
           
@@ -1255,11 +1255,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
-  // NEOBRUTALIST ANIMATIONS & GESTURE SYSTEM
-  // ==========================================
+  
+  
+  
 
-  // 1. Gesture Particle / Mouse Trail & Click Burst
+  
   const createParticle = (x, y) => {
     const particle = document.createElement('div');
     particle.className = 'gesture-particle';
@@ -1326,7 +1326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 2. Intersection Observer for Scroll Reveals
+  
   const revealElements = document.querySelectorAll('.neo-card, .timeline-card, .featured-card, .neo-window, .section-header');
   revealElements.forEach(el => el.classList.add('reveal-init'));
 

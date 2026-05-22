@@ -1,12 +1,7 @@
-/* 
-   NEOBRUTALISM FULL-COLOUR DESIGN SYSTEM
-   ========================================================================== 
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Vibrant Neobrutalism Colors */
+  
   --neo-yellow: #FFF500;
   --neo-green: #39FF14;
   --neo-pink: #FF007F;
@@ -26,13 +21,12 @@
   --border-style: solid var(--neo-black);
   --border-main: var(--border-width) var(--border-style);
   
-  /* Fonts */
+  
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
   --font-mono: 'Space Mono', monospace;
 }
 
-/* Global Reset & Body */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -47,7 +41,7 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--neo-bg-light);
-  /* Neobrutalist Retro Grid/Blueprint Background */
+  
   background-image: 
     linear-gradient(var(--neo-bg-grid) 1.5px, transparent 1.5px),
     linear-gradient(90deg, var(--neo-bg-grid) 1.5px, transparent 1.5px);
@@ -58,7 +52,6 @@ body {
   padding-bottom: 5rem;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 16px;
   height: 16px;
@@ -70,12 +63,18 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--neo-yellow);
   border: 3px solid var(--neo-black);
+  transition: background 0.3s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neo-pink);
+  animation: pulse-scrollbar 0.6s ease-in-out;
 }
 
-/* Typography styling */
+@keyframes pulse-scrollbar {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.95); }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 800;
@@ -93,11 +92,6 @@ a {
   text-decoration: none;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   UTILITY CLASSES - NEOBRUTALISM UI ELEMENTS
-   ────────────────────────────────────────────────────────────────────────── */
-
-/* Solid Shadows & Thick Borders */
 .neo-border {
   border: var(--border-main);
 }
@@ -106,21 +100,48 @@ a {
   box-shadow: var(--neo-card-shadow);
 }
 
-/* Neobrutalist Card Base */
 .neo-card {
   background-color: var(--neo-white);
   border: var(--border-main);
   box-shadow: var(--neo-card-shadow);
   padding: 1.5rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--neo-pink), var(--neo-cyan), var(--neo-yellow), var(--neo-green));
+  background-size: 400% 400%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.neo-card:hover::before {
+  opacity: 0.15;
 }
 
 .neo-card:hover {
-  transform: translate(4px, 4px);
+  transform: translate(4px, 4px) scale(1.02);
   box-shadow: var(--neo-card-shadow-hover);
 }
 
-/* Vibrant colored versions for shuffling card colors */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .bg-yellow  { background-color: var(--neo-yellow)  !important; }
 .bg-green   { background-color: var(--neo-green)   !important; }
 .bg-pink    { background-color: var(--neo-pink)    !important; }
@@ -130,7 +151,6 @@ a {
 .bg-blue    { background-color: var(--neo-blue)    !important; color: var(--neo-white) !important; }
 .bg-white   { background-color: var(--neo-white)   !important; }
 
-/* Interactive Neobrutalist Button */
 .neo-btn {
   display: inline-flex;
   align-items: center;
@@ -146,19 +166,48 @@ a {
   border: var(--border-main);
   box-shadow: 4px 4px 0px var(--neo-black);
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.15s ease,
+              background-color 0.2s ease;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.neo-btn:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .neo-btn:hover {
-  transform: translate(2px, 2px);
+  transform: translate(2px, 2px) scale(1.05);
   box-shadow: 2px 2px 0px var(--neo-black);
   background-color: var(--neo-cyan);
+  animation: btn-wiggle 0.5s ease;
 }
 
 .neo-btn:active {
-  transform: translate(4px, 4px);
+  transform: translate(4px, 4px) scale(0.98);
   box-shadow: 0px 0px 0px var(--neo-black);
+}
+
+@keyframes btn-wiggle {
+  0%, 100% { transform: translate(2px, 2px) rotate(0deg); }
+  25% { transform: translate(2px, 2px) rotate(-2deg); }
+  75% { transform: translate(2px, 2px) rotate(2deg); }
 }
 
 .neo-btn.btn-pink { background-color: var(--neo-pink); }
@@ -177,7 +226,6 @@ a {
   background-color: var(--neo-yellow);
 }
 
-/* Badge/Tag */
 .neo-badge {
   display: inline-block;
   padding: 0.25rem 0.6rem;
@@ -190,12 +238,36 @@ a {
   background-color: var(--neo-white);
   color: var(--neo-black);
   box-shadow: 2px 2px 0px var(--neo-black);
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: badge-float 3s ease-in-out infinite;
 }
 
-/* Outer section label & visual dividers */
+.neo-badge:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  box-shadow: 3px 5px 0px var(--neo-black);
+}
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
 .section-header {
   margin-bottom: 2.5rem;
+  animation: section-header-slide 0.6s ease backwards;
 }
+
+@keyframes section-header-slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .section-num {
   font-family: var(--font-mono);
   font-size: 1rem;
@@ -207,15 +279,42 @@ a {
   border: var(--border-main);
   box-shadow: 3px 3px 0 var(--neo-black);
   margin-bottom: 0.8rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: section-num-bounce 2s ease-in-out infinite;
 }
+
+.section-num:hover {
+  transform: rotate(-5deg) scale(1.1);
+  box-shadow: 5px 5px 0 var(--neo-black);
+}
+
+@keyframes section-num-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
 .section-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
   text-shadow: 3px 3px 0 var(--neo-white);
+  position: relative;
+  display: inline-block;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   RETRO OS WINDOW COMPONENT
-   ────────────────────────────────────────────────────────────────────────── */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: var(--neo-pink);
+  transition: width 0.5s ease;
+}
+
+.section-header:hover .section-title::after {
+  width: 100%;
+}
+
 .neo-window {
   background-color: var(--neo-white);
   border: var(--border-main);
@@ -239,7 +338,6 @@ a {
   user-select: none;
 }
 
-/* Drag indicator for script.js to style cursor */
 .window-header.draggable {
   cursor: move;
 }
@@ -268,7 +366,6 @@ a {
   background-color: var(--neo-white);
 }
 
-/* Terminal variations */
 .window-body.terminal {
   background-color: #121212;
   color: var(--neo-green);
@@ -305,9 +402,6 @@ a {
   to { visibility: hidden; }
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   LAYOUT & CONTAINERS
-   ────────────────────────────────────────────────────────────────────────── */
 nav {
   position: sticky;
   top: 0;
@@ -365,14 +459,24 @@ nav {
   align-items: center;
 }
 
-/* Main Section Wrapper */
 section {
   padding: 6rem 2rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  animation: section-fade-in 0.8s ease backwards;
 }
 
-/* HERO SECTION */
+@keyframes section-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #hero {
   min-height: calc(100vh - 80px);
   display: grid;
@@ -399,6 +503,18 @@ section {
   line-height: 0.95;
   text-shadow: 4px 4px 0 var(--neo-white);
   -webkit-text-stroke: 1.5px var(--neo-black);
+  animation: hero-name-entrance 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes hero-name-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .hero-title-highlight {
@@ -409,6 +525,32 @@ section {
   box-shadow: 5px 5px 0 var(--neo-black);
   transform: rotate(-1deg);
   margin-top: 0.5rem;
+  animation: highlight-pop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s backwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-title-highlight:hover {
+  transform: rotate(2deg) scale(1.05);
+  box-shadow: 8px 8px 0 var(--neo-black);
+  animation: highlight-shake 0.5s ease;
+}
+
+@keyframes highlight-pop {
+  0% {
+    opacity: 0;
+    transform: rotate(-1deg) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-1deg) scale(1);
+  }
+}
+
+@keyframes highlight-shake {
+  0%, 100% { transform: rotate(2deg) scale(1.05); }
+  25% { transform: rotate(-2deg) scale(1.05); }
+  50% { transform: rotate(3deg) scale(1.05); }
+  75% { transform: rotate(-3deg) scale(1.05); }
 }
 
 .hero-desc {
@@ -419,6 +561,35 @@ section {
   border: var(--border-main);
   padding: 1rem;
   box-shadow: 4px 4px 0 var(--neo-black);
+  animation: hero-desc-slide 0.8s ease 0.2s backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-desc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-desc:hover::before {
+  left: 100%;
+}
+
+@keyframes hero-desc-slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .hero-ctas {
@@ -426,6 +597,18 @@ section {
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 1rem;
+  animation: hero-ctas-fade 1s ease 0.4s backwards;
+}
+
+@keyframes hero-ctas-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-dashboard-container {
@@ -434,7 +617,6 @@ section {
   gap: 1.5rem;
 }
 
-/* Digital Stats Board widget */
 .stats-board {
   border: var(--border-main);
   background-color: var(--neo-green);
@@ -464,9 +646,6 @@ section {
   font-weight: bold;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   ABOUT SECTION
-   ────────────────────────────────────────────────────────────────────────── */
 .about-layout {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -477,6 +656,18 @@ section {
 .about-photo-card {
   text-align: center;
   position: relative;
+  animation: photo-card-entrance 0.8s ease;
+}
+
+@keyframes photo-card-entrance {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
 }
 
 .about-photo-wrap {
@@ -487,6 +678,27 @@ section {
   box-shadow: 6px 6px 0 var(--neo-black);
   overflow: hidden;
   margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.about-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-photo-card:hover .about-photo-wrap::after {
+  opacity: 1;
+  animation: shine 1.5s ease;
+}
+
+@keyframes shine {
+  0% { background-position: -200% -200%; }
+  100% { background-position: 200% 200%; }
 }
 
 .about-photo {
@@ -494,11 +706,12 @@ section {
   height: 100%;
   object-fit: cover;
   image-rendering: auto;
-  transition: transform 0.3s;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
 }
 
 .about-photo-card:hover .about-photo {
-  transform: scale(1.05) rotate(2deg);
+  transform: scale(1.1) rotate(3deg);
+  filter: brightness(1.1) contrast(1.1);
 }
 
 .about-photo-tag {
@@ -546,12 +759,33 @@ section {
   box-shadow: var(--neo-card-shadow);
   padding: 1.2rem;
   text-align: center;
-  transition: transform 0.1s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-stat-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.about-stat-item:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .about-stat-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 8px 8px 0 var(--neo-black);
+  transform: translateY(-8px) rotate(-2deg);
+  box-shadow: 10px 10px 0 var(--neo-black);
 }
 
 .about-stat-num {
@@ -561,6 +795,17 @@ section {
   line-height: 1;
   color: var(--neo-black);
   margin-bottom: 0.3rem;
+  transition: transform 0.3s ease;
+}
+
+.about-stat-item:hover .about-stat-num {
+  transform: scale(1.2);
+  animation: stat-bounce 0.6s ease;
+}
+
+@keyframes stat-bounce {
+  0%, 100% { transform: scale(1.2); }
+  50% { transform: scale(1.3); }
 }
 
 .about-stat-label {
@@ -571,9 +816,6 @@ section {
   text-transform: uppercase;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   SKILLS & ARSENAL
-   ────────────────────────────────────────────────────────────────────────── */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -614,6 +856,33 @@ section {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: bold;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease,
+              background-color 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag-card::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.skill-tag-card:hover::before {
+  left: 100%;
+}
+
+.skill-tag-card:hover {
+  transform: translateX(8px) scale(1.05);
+  box-shadow: 6px 6px 0 var(--neo-black);
+  background-color: var(--neo-yellow);
 }
 
 .skill-icon {
@@ -623,15 +892,18 @@ section {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
+
+.skill-tag-card:hover .skill-icon {
+  transform: rotate(360deg) scale(1.2);
+}
+
 .skill-icon svg {
   width: 100%;
   height: 100%;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   EXPERIENCE & EDUCATION TIMELINE
-   ────────────────────────────────────────────────────────────────────────── */
 .timeline-tabs {
   display: flex;
   justify-content: center;
@@ -670,7 +942,6 @@ section {
   display: flex;
 }
 
-/* Timeline Vertical Line */
 .timeline-pane::before {
   content: '';
   position: absolute;
@@ -688,7 +959,20 @@ section {
   border: var(--border-main);
   box-shadow: var(--neo-card-shadow);
   padding: 1.5rem;
-  transition: transform 0.15s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease;
+  animation: timeline-slide-in 0.6s ease backwards;
+}
+
+@keyframes timeline-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .timeline-card::before {
@@ -703,15 +987,18 @@ section {
   border: 3.5px solid var(--neo-black);
   box-shadow: 2px 2px 0 var(--neo-black);
   z-index: 2;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .timeline-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 var(--neo-black);
+  transform: translate(-8px, -8px);
+  box-shadow: 12px 12px 0 var(--neo-black);
 }
 
 .timeline-card:hover::before {
   background-color: var(--neo-pink);
+  transform: scale(1.5) rotate(180deg);
+  box-shadow: 3px 3px 0 var(--neo-black);
 }
 
 .timeline-meta {
@@ -759,9 +1046,6 @@ section {
   margin-bottom: 0.3rem;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   PROJECTS SECTION (CURATED + DYNAMIC GITHUB)
-   ────────────────────────────────────────────────────────────────────────── */
 .curated-title {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
@@ -786,12 +1070,37 @@ section {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease;
+  position: relative;
+}
+
+.featured-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.featured-card:hover::after {
+  opacity: 1;
+  animation: card-glow 2s ease infinite;
+}
+
+@keyframes card-glow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-25%, -25%); }
 }
 
 .featured-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 10px 10px 0 var(--neo-black);
+  transform: translate(-6px, -6px) scale(1.02);
+  box-shadow: 12px 12px 0 var(--neo-black);
 }
 
 .featured-img-wrap {
@@ -800,17 +1109,20 @@ section {
   border-bottom: var(--border-main);
   position: relative;
   overflow: hidden;
+  background: linear-gradient(45deg, var(--neo-pink), var(--neo-cyan));
 }
 
 .featured-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              filter 0.3s ease;
 }
 
 .featured-card:hover .featured-img {
-  transform: scale(1.03);
+  transform: scale(1.15) rotate(2deg);
+  filter: brightness(1.1) saturate(1.2);
 }
 
 .featured-card-body {
@@ -845,7 +1157,6 @@ section {
   padding-top: 1rem;
 }
 
-/* Dynamic Github Hub Component */
 .github-hub-header {
   margin-bottom: 2rem;
   background-color: var(--neo-green);
@@ -920,12 +1231,31 @@ section {
   flex-direction: column;
   justify-content: space-between;
   min-height: 220px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.project-card:hover::before {
+  left: 100%;
 }
 
 .project-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 var(--neo-black);
+  transform: translate(-5px, -5px) rotate(-1deg);
+  box-shadow: 10px 10px 0 var(--neo-black);
 }
 
 .project-lang {
@@ -950,6 +1280,12 @@ section {
   font-weight: 800;
   margin-bottom: 0.6rem;
   word-break: break-all;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-name {
+  color: var(--neo-pink);
+  transform: translateX(5px);
 }
 
 .project-desc {
@@ -990,7 +1326,6 @@ section {
   color: var(--neo-pink);
 }
 
-/* Skeleton Loading cards */
 .skeleton-card {
   border: var(--border-main);
   box-shadow: var(--neo-card-shadow);
@@ -1020,9 +1355,6 @@ section {
   100% { background-position: -200% 0; }
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   CERTIFICATES GALLERY
-   ────────────────────────────────────────────────────────────────────────── */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1111,7 +1443,6 @@ section {
   color: #777;
 }
 
-/* Lightbox modal style */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -1191,9 +1522,6 @@ section {
   font-weight: bold;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   CV & RESUME PANEL WITH PRINT STYLING
-   ────────────────────────────────────────────────────────────────────────── */
 .cv-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -1309,7 +1637,6 @@ section {
   margin-top: 2rem;
 }
 
-/* Print CSS Media Query */
 @media print {
   body {
     background-image: none !important;
@@ -1335,9 +1662,6 @@ section {
   }
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   PIXEL CANVAS WIDGET (INTERACTIVE GADGET)
-   ────────────────────────────────────────────────────────────────────────── */
 .pixel-canvas-widget {
   background-color: var(--neo-white);
   border: var(--border-main);
@@ -1404,9 +1728,6 @@ section {
   margin-top: 1rem;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   CONTACT FORM
-   ────────────────────────────────────────────────────────────────────────── */
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -1473,7 +1794,6 @@ section {
   color: #555;
 }
 
-/* Contact Form UI */
 .contact-form-card {
   background-color: var(--neo-white);
   border: var(--border-main);
@@ -1521,7 +1841,6 @@ textarea.form-input {
   resize: vertical;
 }
 
-/* Form confirmation popups */
 .form-status {
   padding: 0.8rem 1rem;
   border: var(--border-main);
@@ -1543,9 +1862,6 @@ textarea.form-input {
   display: block;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   FOOTER
-   ────────────────────────────────────────────────────────────────────────── */
 footer {
   margin-top: 6rem;
   border-top: var(--border-main);
@@ -1571,9 +1887,6 @@ footer {
   font-weight: bold;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   HAMBURGER MENU & MOBILE DRAWER
-   ────────────────────────────────────────────────────────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -1620,7 +1933,7 @@ footer {
   border-right: var(--border-main);
   transform: translateX(-100%);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  /* Hidden by default via transform, not display:none */
+  
   visibility: hidden;
   pointer-events: none;
 }
@@ -1662,11 +1975,6 @@ footer {
   gap: 0.75rem;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   RESPONSIVE DESIGN / MEDIA QUERIES
-   ────────────────────────────────────────────────────────────────────────── */
-
-/* Tablet: 993px – 1200px */
 @media (max-width: 1200px) {
   nav {
     padding: 0.8rem 1.5rem;
@@ -1692,7 +2000,6 @@ footer {
   }
 }
 
-/* Tablet: 768px – 992px */
 @media (max-width: 992px) {
   #hero {
     grid-template-columns: 1fr;
@@ -1737,9 +2044,8 @@ footer {
   }
 }
 
-/* Mobile: max 768px — hamburger aktif */
 @media (max-width: 768px) {
-  /* Nav: sembunyikan menu & actions, tampilkan hamburger */
+  
   nav {
     padding: 0.8rem 1rem;
     flex-wrap: nowrap;
@@ -1758,14 +2064,14 @@ footer {
     display: flex;
   }
 
-  /* mobile-nav-drawer sudah selalu rendered, cukup hamburger yang di-show */
+  
 
-  /* Sections */
+  
   section {
     padding: 4rem 1rem 1rem;
   }
 
-  /* Hero */
+  
   #hero {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1792,12 +2098,12 @@ footer {
     justify-content: center;
   }
 
-  /* Stats board */
+  
   .stats-board {
     font-size: 0.85rem;
   }
 
-  /* Terminal window — batasi tinggi di mobile */
+  
   #terminal-window {
     max-height: 280px;
   }
@@ -1815,7 +2121,7 @@ footer {
     gap: 0.3rem;
   }
 
-  /* About */
+  
   .about-layout {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1831,13 +2137,13 @@ footer {
     gap: 0.8rem;
   }
 
-  /* Skills */
+  
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
 
-  /* Timeline */
+  
   .timeline-tabs {
     gap: 0.75rem;
   }
@@ -1863,7 +2169,7 @@ footer {
     top: 18px;
   }
 
-  /* Projects */
+  
   .featured-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1878,12 +2184,12 @@ footer {
     width: 100%;
   }
 
-  /* Certificates */
+  
   .cert-grid {
     grid-template-columns: 1fr;
   }
 
-  /* CV */
+  
   .cv-panel {
     padding: 1.5rem;
   }
@@ -1914,7 +2220,7 @@ footer {
     justify-content: center;
   }
 
-  /* Pixel canvas */
+  
   .pixel-canvas-widget {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -1939,7 +2245,7 @@ footer {
     justify-content: center;
   }
 
-  /* Contact */
+  
   .contact-container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1950,7 +2256,7 @@ footer {
     gap: 1rem;
   }
 
-  /* Footer */
+  
   .footer-content {
     flex-direction: column;
     text-align: center;
@@ -1958,7 +2264,6 @@ footer {
   }
 }
 
-/* Small mobile: max 480px */
 @media (max-width: 480px) {
   .nav-logo {
     font-size: 1.4rem;
@@ -2007,9 +2312,6 @@ footer {
   }
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   DEMO MODE & TOUR OVERLAYS
-   ────────────────────────────────────────────────────────────────────────── */
 .demo-banner {
   position: fixed;
   top: -80px;
@@ -2065,10 +2367,6 @@ footer {
   to { outline-color: var(--neo-cyan); }
 }
 
-
-/* ==========================================
-   NEOBRUTALIST ANIMATIONS & PARTICLE SYSTEM
-   ========================================== */
 .gesture-particle {
   position: absolute;
   pointer-events: none;
@@ -2092,7 +2390,6 @@ footer {
   }
 }
 
-/* Scroll Reveal Classes */
 .reveal-init {
   opacity: 0;
   transform: translateY(35px) rotate(-1.5deg);
@@ -2105,7 +2402,6 @@ footer {
   transform: translateY(0) rotate(0deg);
 }
 
-/* Floating animation for welcome badge and stats */
 @keyframes float-gentle {
   0% {
     transform: translateY(0px) rotate(var(--rot, 0deg));
