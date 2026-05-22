@@ -1023,7 +1023,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function startDemo() {
     if (demoActive) return;
     demoActive = true;
-    
+
+    // Tutup mobile drawer otomatis saat demo dimulai
+    toggleMobileMenu(true);
     
     if (!soundEnabled) {
       const soundBtn = document.getElementById('sound-toggle');
@@ -1104,10 +1106,23 @@ document.addEventListener('DOMContentLoaded', () => {
           if (clearBtn) clearBtn.click();
           
           
+          // Gambar love/hati di grid 16x16
+          // Grid 16 kolom, index = row*16 + col
           const rCoords = [
-            52, 68, 84, 100, 116, 132, 148, 164, 180, 196, 
-            53, 54, 55, 56, 73, 89, 105, 120, 119, 118, 117, 
-            134, 151, 168, 185, 202 
+            // Baris 3: dua puncak hati
+            18, 19, 22, 23,
+            // Baris 4: melebar
+            17, 18, 19, 20, 21, 22, 23, 24,
+            // Baris 5: penuh
+            17, 18, 19, 20, 21, 22, 23, 24,
+            // Baris 6: penuh
+            18, 19, 20, 21, 22, 23,
+            // Baris 7: menyempit
+            19, 20, 21, 22,
+            // Baris 8: lebih sempit
+            20, 21,
+            // Baris 9: titik ujung
+            20
           ];
           
           const cells = document.querySelectorAll('.pixel-cell');

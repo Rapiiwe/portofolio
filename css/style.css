@@ -1797,6 +1797,18 @@ footer {
     font-size: 0.85rem;
   }
 
+  /* Terminal window — batasi tinggi di mobile */
+  #terminal-window {
+    max-height: 280px;
+  }
+
+  #terminal-window .window-body.terminal {
+    min-height: 120px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.78rem;
+  }
+
   .stats-board-row {
     flex-direction: column;
     align-items: flex-start;
