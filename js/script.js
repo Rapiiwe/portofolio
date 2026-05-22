@@ -284,7 +284,7 @@
         windowEl.style.display = 'none';
         
         if (windowEl.id === 'terminal-window') {
-          console.log("Terminal closed. You can restore windows by reloading page.");
+          console.log("Terminal ditutup. Anda dapat memulihkan jendela dengan memuat ulang halaman.");
         }
       }
     });
@@ -316,7 +316,7 @@
 
   let BIO_COMMANDS = BIO_COMMANDS_ID;
 
-  function appendTerminalLine(text, isInput = false, customPrompt = "guest@rafi-pc:~$ ") {
+  function appendTerminalLine(text, isInput = false, customPrompt = "tamu@rafi-pc:~$ ") {
     const line = document.createElement('div');
     line.className = 'terminal-line';
     
@@ -383,7 +383,7 @@
         if (BIO_COMMANDS.hasOwnProperty(cmd)) {
           appendTerminalLine(BIO_COMMANDS[cmd]);
         } else {
-          appendTerminalLine(`Command not found: "${fullCmd}". Type 'help' for commands.`);
+          appendTerminalLine(`Perintah tidak ditemukan: "${fullCmd}". Ketik 'help' untuk melihat perintah.`);
         }
       }
     });
@@ -465,7 +465,7 @@
     if (filteredRepos.length === 0) {
       projectsGrid.innerHTML = `
         <div class="neo-card bg-white" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-          <p style="font-family: var(--font-mono); font-weight: bold;">❌ No repositories found matching the criteria.</p>
+          <p style="font-family: var(--font-mono); font-weight: bold;">❌ Tidak ada repositori yang ditemukan sesuai kriteria.</p>
         </div>`;
       return;
     }
@@ -473,7 +473,7 @@
     projectsGrid.innerHTML = filteredRepos.map((repo, idx) => {
       const lang = repo.language || 'Code';
       const dotColor = LANG_COLORS[lang] || '#000000';
-      const desc = repo.description || 'No repository description available. Tap to view source code.';
+      const desc = repo.description || 'Tidak ada deskripsi repositori tersedia. Ketuk untuk melihat kode sumber.';
       const stars = repo.stargazers_count;
       const updated = new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
       
@@ -536,7 +536,7 @@
   async function fetchGitHubRepos() {
     try {
       const res = await fetch('https://api.github.com/users/Rapiiwe/repos?sort=updated&per_page=25');
-      if (!res.ok) throw new Error("API rate limits or account not found.");
+      if (!res.ok) throw new Error("Batas API tercapai atau akun tidak ditemukan.");
       
       const repos = await res.json();
       
@@ -556,7 +556,7 @@
       renderRepos();
       
     } catch (err) {
-      console.warn("Using fallback static repositories due to GitHub API error:", err);
+      console.warn("Menggunakan repositori statis cadangan karena error GitHub API:", err);
       
       allRepos = [
         {
@@ -767,7 +767,7 @@
       
       if (!name || !email || !message) {
         if (formError) {
-          formError.textContent = "⚠️ Please fill in all fields before submitting!";
+          formError.textContent = "⚠️ Harap isi semua kolom sebelum mengirim!";
           formError.style.display = 'block';
           if (formSuccess) formSuccess.style.display = 'none';
         }
@@ -777,7 +777,7 @@
       
       playSound('success');
       if (formSuccess) {
-        formSuccess.innerHTML = "🎉 Message Sent Successfully! (Simulated submission - Rafi will receive this message soon.)";
+        formSuccess.innerHTML = "🎉 Pesan Berhasil Dikirim! (Simulasi pengiriman - Rafi akan segera menerima pesan ini.)";
         formSuccess.style.display = 'block';
         if (formError) formError.style.display = 'none';
       }
@@ -808,7 +808,7 @@
       "nav-draw": "Draw",
       "nav-contact": "Contact",
       "hero-welcome": "✦ RAPII — hello, friends!",
-      "hero-desc": "Learning code, one commit at a time. Informatics Engineering student building retro & modern web experiences.",
+      "hero-desc": "Belajar ngoding, commit demi commit. Mahasiswa Teknik Informatika yang suka membangun antarmuka web yang interaktif, modern.",
       "hero-btn-projects": "View Projects ↓",
       "hero-btn-contact": "Get In Touch ✉",
       "hero-btn-sandbox": "Play Sandbox 🎮",
@@ -816,80 +816,80 @@
       "about-stat-status-label": "Status:",
       "about-stat-status-val": "🟢 Active Coding",
       "about-stat-major": "Major:",
-      "about-stat-major-val": "Informatics Eng.",
+      "about-stat-major-val": "Teknik Informatika",
       "about-title": "About me",
-      "about-p1": "Hello! I'm Rafi, an Informatics Engineering student who is deeply passionate about web development. I love diving into software architecture, creating interactive user interfaces, and turning complex logic into clean, functional code.",
-      "about-p2": "For me, coding isn't just about passing college exams; it's a creative outlet. From debugging tricky runtime errors to designing responsive layouts, I enjoy every step of the development cycle. I spend my time exploring modern frontend frameworks and building interactive web experiences.",
-      "about-p3": "I'm always excited to learn new frameworks, collaborate on open-source projects, and build software that solves real-world problems. Let's connect and write some code!",
-      "about-stat-repos": "Github Repos",
-      "about-stat-active": "Active Since",
-      "about-stat-bloopers": "Bloopers to Fix",
-      "skills-title": "My Arsenal",
-      "skills-frontend": "Frontend Stack",
-      "skills-backend": "Backend Stack",
-      "skills-tools": "Developer Utilities",
-      "journey-title": "My Journey",
-      "journey-tab-edu": "Education",
-      "journey-tab-exp": "Experience",
-      "projects-title": "What I've Built",
-      "projects-curated": "Curated Projects",
-      "projects-dynamic": "Dynamic GitHub Panel",
-      "projects-search-placeholder": "🔍 Search repository names...",
-      "certs-title": "Certificates",
-      "certs-coming-soon": "Certificates Coming Soon",
-      "certs-desc": "Currently preparing for certifications in Flutter Mobile Development, Database Administration, and Advanced Frontend Engineering.",
-      "certs-stay-tuned": "Stay Tuned!",
-      "cv-title": "My Resume",
-      "cv-subtitle": "Web Developer & Informatics Student",
-      "cv-contact-major": "Informatics Engineering",
-      "cv-core-title": "Core Competencies",
-      "cv-projects-title": "Projects History",
-      "cv-print-btn": "🖨 Print / Export PDF Resume",
-      "draw-title": "Pixel Canvas Sandbox",
-      "draw-desc": "🎨 <strong>Instructions:</strong> Click and drag across the canvas cells to draw pixel art. Choose different colors from the picker panel. Toggle sound on in the nav bar for 8-bit draw noises!",
-      "draw-btn-clear": "🧹 Reset Grid",
-      "draw-btn-download": "💾 Download Art (.png)",
-      "contact-title": "Let's Connect",
-      "contact-subtitle": "Feel free to reach out for project collaboration, job inquiries, or just to say hello! I'm always open to talking tech.",
-      "contact-label-name": "Full Name / Organization",
-      "contact-label-email": "Email Address",
-      "contact-label-msg": "Message Content",
-      "contact-btn-submit": "🚀 Dispatch Message",
-      "experience-coming-soon": "Experience Coming Soon",
-      "experience-desc": "Currently focusing on academic coursework at UPI YPTK Padang and building solid open-source projects. Open for internship and junior developer opportunities.",
-      "edu1-role": "Informatics Engineering Student",
+      "about-p1": "Halo! Saya Rafi, seorang mahasiswa Teknik Informatika yang punya passion besar di dunia web development. Saya suka mengulik arsitektur perangkat lunak, mendesain antarmuka interaktif, dan menerjemahkan logika rumit menjadi baris kode yang bersih dan fungsional.",
+      "about-p2": "Bagi saya, pemrograman itu seperti memecahkan teka-teki yang seru—setiap bug adalah tantangan menarik untuk belajar hal baru. Di luar jam kuliah, saya aktif mengeksplorasi framework modern dan membangun proyek-proyek web yang interaktif.",
+      "about-p3": "Saya selalu antusias untuk mempelajari teknologi baru, berkolaborasi dalam proyek open-source, dan menciptakan solusi digital yang bermanfaat. Let's connect dan mari ngoding bareng!",
+      "about-stat-repos": "Repositori Github",
+      "about-stat-active": "Aktif Sejak",
+      "about-stat-bloopers": "Bug untuk Diperbaiki",
+      "skills-title": "Gudang Senjata",
+      "skills-frontend": "Teknologi Frontend",
+      "skills-backend": "Teknologi Backend",
+      "skills-tools": "Alat Pengembang",
+      "journey-title": "Perjalanan Saya",
+      "journey-tab-edu": "Pendidikan",
+      "journey-tab-exp": "Pengalaman",
+      "projects-title": "Yang Saya Bangun",
+      "projects-curated": "Proyek Pilihan",
+      "projects-dynamic": "Panel Dinamis GitHub",
+      "projects-search-placeholder": "🔍 Cari nama repositori...",
+      "certs-title": "Sertifikat",
+      "certs-coming-soon": "Sertifikat Segera Hadir",
+      "certs-desc": "Saat ini sedang mempersiapkan sertifikasi untuk Pengembangan Mobile Flutter, Administrasi Database, dan Rekayasa Frontend Tingkat Lanjut.",
+      "certs-stay-tuned": "Pantau Terus!",
+      "cv-title": "Daftar Riwayat Hidup",
+      "cv-subtitle": "Pengembang Web & Mahasiswa Informatika",
+      "cv-contact-major": "Teknik Informatika",
+      "cv-core-title": "Keahlian Utama",
+      "cv-projects-title": "Riwayat Proyek",
+      "cv-print-btn": "🖨 Cetak / Ekspor PDF Resume",
+      "draw-title": "Wadah Gambar Piksel",
+      "draw-desc": "🎨 <strong>Instruksi:</strong> Klik dan seret di sepanjang kotak untuk menggambar piksel. Pilih warna yang berbeda di panel pilihan. Nyalakan suara di nav bar untuk efek suara 8-bit retro!",
+      "draw-btn-clear": "🧹 Reset Papan",
+      "draw-btn-download": "💾 Unduh Gambar (.png)",
+      "contact-title": "Mari Terhubung",
+      "contact-subtitle": "Jangan ragu untuk menghubungi saya untuk kolaborasi proyek, peluang kerja, atau sekadar menyapa! Saya selalu terbuka untuk berdiskusi tentang teknologi.",
+      "contact-label-name": "Nama Lengkap / Perusahaan",
+      "contact-label-email": "Alamat Email Anda",
+      "contact-label-msg": "Isi Pesan Anda",
+      "contact-btn-submit": "🚀 Kirim Pesan",
+      "experience-coming-soon": "Pengalaman Segera Hadir",
+      "experience-desc": "Saat ini fokus pada perkuliahan di UPI YPTK Padang dan membangun proyek open-source yang solid. Terbuka untuk magang dan peluang pengembang pemula.",
+      "edu1-role": "Mahasiswa Teknik Informatika",
       "edu1-org": "UPI YPTK Padang",
-      "edu1-desc": "Currently pursuing academic studies in computer science and software development.",
-      "edu1-li1": "Core coursework: Algorithms, Data Structures, Relational Databases, Web Programming.",
-      "edu1-li2": "Active member of local student developer groups and coding clubs.",
-      "edu2-role": "Self-Taught Programmer",
-      "edu2-org": "Independent Learning",
-      "edu2-desc": "Supplementing formal academic learning with industry certification paths.",
-      "edu2-li1": "Learning from various sources including YouTube, TikTok, and blog posts.",
-      "edu2-li2": "Focusing on Python, HTML, CSS, responsive layouts, and responsive design systems.",
+      "edu1-desc": "Saat ini menempuh studi di bidang ilmu komputer dan pengembangan perangkat lunak.",
+      "edu1-li1": "Mata kuliah inti: Algoritma, Struktur Data, Basis Data Relasional, Pemrograman Web.",
+      "edu1-li2": "Anggota aktif komunitas mahasiswa developer dan klub coding lokal.",
+      "edu2-role": "Programmer Otodidak",
+      "edu2-org": "Belajar Mandiri",
+      "edu2-desc": "Melengkapi pembelajaran akademis formal dengan jalur sertifikasi industri.",
+      "edu2-li1": "Belajar dari berbagai sumber, mulai dari YouTube, TikTok, dan blog.",
+      "edu2-li2": "Berfokus pada Python, HTML, CSS, tata letak responsif, dan sistem desain responsif.",
 
       
       "fp1-name": "Portfolio",
-      "fp1-desc": "A premium developer portfolio designed. Features a draggable terminal system, real-time clock widgets, sound board integrations, and printable stylesheets.",
+      "fp1-desc": "Portofolio developer premium yang dirancang dengan sistem terminal yang bisa diseret, widget jam real-time, integrasi papan suara, dan stylesheet yang bisa dicetak.",
       "fp2-name": "Neo Draw Canvas",
-      "fp2-desc": "An interactive retro pixel board widget embedded in a web canvas container. Allows pixel grids to be painted with colors, cleared, and exported directly to PNG files. Includes retro Audio synthesizer sounds.",
-      "fp-btn-source": "Source Code",
-      "fp-btn-demo": "Live Demo",
-      "fp2-btn-run": "Run Canvas",
+      "fp2-desc": "Widget papan piksel retro interaktif yang tertanam dalam container canvas web. Memungkinkan grid piksel diwarnai, dihapus, dan diekspor langsung ke file PNG. Dilengkapi suara synthesizer Audio retro.",
+      "fp-btn-source": "Kode Sumber",
+      "fp-btn-demo": "Demo Langsung",
+      "fp2-btn-run": "Jalankan Canvas",
 
       
-      "cv-edu1-role": "Bachelor of Informatics Engineering",
-      "cv-edu1-date": "2024 - Present",
-      "cv-edu1-desc": "Focused on algorithmic fundamentals, software engineering, and database systems. Active participant in student programming associations.",
-      "cv-skill-dev": "Development",
-      "cv-skill-tools": "Tools",
+      "cv-edu1-role": "Sarjana Teknik Informatika",
+      "cv-edu1-date": "2024 - Sekarang",
+      "cv-edu1-desc": "Berfokus pada dasar-dasar algoritma, rekayasa perangkat lunak, dan sistem basis data. Peserta aktif asosiasi pemrograman mahasiswa.",
+      "cv-skill-dev": "Pengembangan",
+      "cv-skill-tools": "Alat",
       "cv-skill-soft": "Soft Skills",
-      "cv-skill-soft-list": "Problem Solving, Rapid Self-Learning, Critical Reasoning, Team Collaboration",
-      "cv-proj1-role": "Personal Portfolio Web Environment",
-      "cv-proj1-desc": "Designed and built an interactive portfolio featuring retro OS panels, Web Audio synthesizers, and pixel board drawing systems.",
-      "cv-proj2-role": "Independent Project Development",
+      "cv-skill-soft-list": "Pemecahan Masalah, Belajar Mandiri Cepat, Penalaran Kritis, Kolaborasi Tim",
+      "cv-proj1-role": "Lingkungan Web Portofolio Pribadi",
+      "cv-proj1-desc": "Merancang dan membangun portofolio interaktif dengan panel OS retro, synthesizer Web Audio, dan sistem gambar papan piksel.",
+      "cv-proj2-role": "Pengembangan Proyek Mandiri",
       "cv-proj2-date": "2024 - 2025",
-      "cv-proj2-desc": "Built multiple personal open-source projects hosted on GitHub, improving proficiency in Python, HTML, and CSS."
+      "cv-proj2-desc": "Membangun beberapa proyek open-source pribadi yang dihosting di GitHub, meningkatkan kemampuan dalam Python, HTML, CSS."
     },
     id: {
       "nav-about": "Tentang",
